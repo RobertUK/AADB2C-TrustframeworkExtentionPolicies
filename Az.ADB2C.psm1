@@ -208,12 +208,12 @@ function Get-MSGraphAPIAccessToken
     Connect-AzADB2C -t "yourtenant"
 
 .EXAMPLE
-    Connect-AzADB2C -ConfigPath .\b2cAppSettings_yourtenant.json
+    Connect-AzADB2C -ConfigPath .\b2cAppSettings_itthingsb2c.json
 #>
 function Connect-AzADB2C
 (
-    [Parameter(Mandatory=$false)][Alias('t')][string]$TenantName = "",
-    [Parameter(Mandatory=$false)][Alias('c')][string]$ConfigPath = ""
+    [Parameter(Mandatory=$false)][Alias('t')][string]$TenantName = "itthingsb2c.onmicrosoft.com",
+    [Parameter(Mandatory=$false)][Alias('c')][string]$ConfigPath = ".\b2cAppSettings_itthingsb2c.json"
 )
 {
     # if you just specify "-t yourtenant", we try to see if there is a config file for that tenant
@@ -1407,14 +1407,14 @@ function Set-AzADB2CAppInsights
     PolicyPrefix to load. Prefix is "demo" in B2C_1A_demo_SignUpOrSignin
 
 .EXAMPLE
-    Read-AzADB2CConfig -ConfigPath .\b2cAppSettings_yourtenant.json
+    Read-AzADB2CConfig -ConfigPath .\b2cAppSettings_yourtenant.jsonf
 #>
 function Read-AzADB2CConfig
 (
     [Parameter(Mandatory=$false)][Alias('p')][string]$PolicyPath = "",
     [Parameter(Mandatory=$false)][Alias('n')][string]$PolicyPrefix = "",  
     [Parameter(Mandatory=$false)][Alias('k')][boolean]$KeepPolicyIds = $False,  
-    [Parameter(Mandatory=$true)][Alias('c')][string]$ConfigPath = ""
+    [Parameter(Mandatory=$false)][Alias('c')][string]$ConfigPath =  ".\b2cAppSettings_itthingsb2c.json"
     )
 {
     
@@ -1925,7 +1925,7 @@ Function Enable-AzADB2CIdentityExperienceFramework
     [Parameter(Mandatory=$false)][Alias('f')][string]$FacebookSecret = "abc123"              # dummy fb secret
 )
 {
-    RefreshTokenIfExpired
+
     New-AzADB2CPolicyKey -KeyContainerName "B2C_1A_TokenSigningKeyContainer" -KeyType "RSA" -KeyUse "sig"
     New-AzADB2CPolicyKey -KeyContainerName "B2C_1A_TokenEncryptionKeyContainer" -KeyType "RSA" -KeyUse "enc"
     New-AzADB2CIdentityExperienceFrameworkApps
@@ -2756,6 +2756,7 @@ Function Remove-AzADB2CExtensionAttribute
     $appExt = $resp.value[0]    
     $fullAttrName = "extension_" + $appExt.appid.Replace("-","") + "_$attributeName"
     #$resp = Invoke-GraphRestMethodGet "applications/$($appExt.id)/extensionProperties?`$filter=name eq '$fullAttrName'&`$select=id,appid"
+    Write-Host "$($appExt.id)/extensionProperties"
     $resp = Get-Application -Path "$($appExt.id)/extensionProperties" -Select "id,appid"
     if ( $resp.value.Length -ne 1 ) {
         write-warning "Extension Attribute does not exist $fullAttrName"
@@ -2858,8 +2859,10 @@ Function Set-AzADB2CExtensionAttributeForUser
     }
     $appExt = $resp.value[0]    
     $fullAttrName = "extension_" + $appExt.appid.Replace("-","") + "_$attributeName"
-    #$resp = Invoke-GraphRestMethodGet "applications/$($appExt.id)/extensionProperties?`$filter=name eq '$fullAttrName'&`$select=id,appid"
-    $resp = Get-Application -Path "$($appExt.id)/extensionProperties" -Select "id,appid"
+    $resp = Invoke-GraphRestMethodGet "applications/$($appExt.id)/extensionProperties?`$filter=name eq '$fullAttrName'&`$select=id,appid"
+    #Write-Debug "$($appExt.id)/extensionProperties"
+    #$resp = Get-Application -Path "$($appExt.id)/extensionProperties" -Select "id,appid" -
+    Write-Verbose $resp.value.Length
     if ( $resp.value.Length -ne 1 ) {
         write-warning "Extension Attribute does not exist $fullAttrName"
         return
@@ -3508,3 +3511,4 @@ Export-ModuleMember -function Set-AzADB2CLocalization
 Export-ModuleMember -function Set-AzADB2CPolicyDetails
 Export-ModuleMember -function Start-AzADB2CPortal
 Export-ModuleMember -function Test-AzADB2CPolicy
+Export-ModuleMember -function Get-Application

@@ -1436,14 +1436,14 @@ function Connect-AzureADB2CEnv
     PolicyPrefix to load. Prefix is "demo" in B2C_1A_demo_SignUpOrSignin
 
 .EXAMPLE
-    Read-AzureADB2CConfig -ConfigPath .\b2cAppSettings_yourtenant.json
+    Read-AzureADB2CConfig -ConfigPath .\b2cAppSettings_itthingsb2c.json
 #>
 function Read-AzureADB2CConfig
 (
     [Parameter(Mandatory=$false)][Alias('p')][string]$PolicyPath = "",
     [Parameter(Mandatory=$false)][Alias('n')][string]$PolicyPrefix = "",  
     [Parameter(Mandatory=$false)][Alias('k')][boolean]$KeepPolicyIds = $False,  
-    [Parameter(Mandatory=$true)][Alias('c')][string]$ConfigPath = "", 
+    [Parameter(Mandatory=$false)][Alias('c')][string]$ConfigPath = ".\b2cAppSettings_itthingsb2c.json", #".\b2cAppSettings_itthingsb2c.json", 
     [Parameter(Mandatory=$false)][boolean]$AzureCli = $False         # if to force Azure CLI on Windows
     )
 {
@@ -1484,7 +1484,7 @@ function Read-AzureADB2CConfig
         $global:storageConnectString="DefaultEndpointsProtocol=https;AccountName=$uxStorageAccount;AccountKey=$uxStorageAccountKey;EndpointSuffix=$EndpointSuffix"    
     }
     
-    if ( "" -eq $b2cAppSettings.TenantName ) {
+    if ( "" -ne $b2cAppSettings.TenantName ) {
         $TenantName = $b2cAppSettings.TenantName
     }
     

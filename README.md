@@ -48,7 +48,7 @@ import-module .\Az.ADB2C.psm1
 This powershell module work with a combination of interactive login and client credentials to perform the operations. 
 When you start with new B2C tenant, there is no AppReg for the client credentials and we need to start by setting that up.
 Therefor, we need to run these to commands first. `Connect-AzADB2CDevicelogin` will sign you in to your tenant and request an access token
-with the scope for creating this AppReg. Change ***yourtenant*** to your B2C tenant name and optionally name the AppReg for the client credentials app differently. 
+with the scope for creating this AppReg. Change ***itthingsb2c*** to your B2C tenant name and optionally name the AppReg for the client credentials app differently. 
 
 When you run the device login command, it will copy the device code onto your clipboard and you can paste it into your browser with Ctrl+V. The rest of the signin depends on how you company have configured device login to work.
    
@@ -59,10 +59,10 @@ Connect-AzADB2CDevicelogin -TenantName "itthingsb2c.onmicrosoft.com" -Scope "Dir
 New-AzADB2CGraphApp -n "B2C-Graph-App" -CreateConfigFile
 ```
 
-The `-CreateConfigFile` switch will create a file named `b2cAppSettings_yourtenant.json` and copy in the AppID (client_id) and key (client_secret) into the file. If you don't pass the switch, you have to copy-n-paste the json output for "ClientCredentials" and update the b2cAppSettings.json file. Update the tenant name in b2cAppSettings.json too.
+The `-CreateConfigFile` switch will create a file named `b2cAppSettings_itthingsb2c.json` and copy in the AppID (client_id) and key (client_secret) into the file. If you don't pass the switch, you have to copy-n-paste the json output for "ClientCredentials" and update the b2cAppSettings.json file. Update the tenant name in b2cAppSettings.json too.
 
 ### 3. Grant permissions to ***B2C-Graph-App***
-The command `New-AzADB2CGraphApp` creats an AppReg to be used for client credentials, but it does not grant permissions to it. You leed to login to [https://portal.azure.com/yourtenant.onmicrosoft.com](https://portal.azure.com/yourtenant.onmicrosoft.com) and grant admin consent under API permissions. If the `Grant admin consent` button is greyed out in the portal, just wait a few seconds and do a hard refresh in the browser.
+The command `New-AzADB2CGraphApp` creats an AppReg to be used for client credentials, but it does not grant permissions to it. You leed to login to [https://portal.azure.com/itthingsb2c.onmicrosoft.com](https://portal.azure.com/itthingsb2c.onmicrosoft.com) and grant admin consent under API permissions. If the `Grant admin consent` button is greyed out in the portal, just wait a few seconds and do a hard refresh in the browser.
 
 ![Permissions to Grant](media/01-permissions-to-grant.png)
 
@@ -70,7 +70,7 @@ The command `New-AzADB2CGraphApp` creats an AppReg to be used for client credent
 After you have completed the above step, you need to reauthenticate in order to be able to complete the rest of the setup. You do not need to close the powershell session. Issuing the below command in the same powershell session is ok.
 
 ```Powershell
-Connect-AzADB2C -ConfigPath .\b2cAppSettings_yourtenant.json
+Connect-AzADB2C -ConfigPath .\b2cAppSettings_itthingsb2c.json
 ```
 
 ### 5. Enabling Configuration for Identity Experience Framework
@@ -82,7 +82,7 @@ Enable-AzADB2CIdentityExperienceFramework -n "ABC-WebApp" -f "abc123"
 ```
 
 ### 6. (Optional) Create a Local Admin user
-You might consider creating a local admin user for the purpose of having a local user with admin rights that you can use to login to [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer). The user principle name will be `graphexplorer@yourtenant.onmicrosoft.com`. Having a local admin user also protects you from being completly locked out from your tenant in case the account you created the tenant becomes unusable.
+You might consider creating a local admin user for the purpose of having a local user with admin rights that you can use to login to [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer). The user principle name will be `graphexplorer@itthingsb2c.onmicrosoft.com`. Having a local admin user also protects you from being completly locked out from your tenant in case the account you created the tenant becomes unusable.
 
 ```powershell
 New-AzADB2CLocalAdmin -u "graphexplorer" -RoleNames @("Global Administrator")
@@ -104,14 +104,14 @@ import-module .\Az.ADB2C.psm1
 Then, run the cmdlet `Connect-AzADB2C` and specify your config file on the command line.
 
 ```Powershell
-Connect-AzADB2C -ConfigPath .\b2cAppsettings_yourtenant.json
+Connect-AzADB2C -ConfigPath .\b2cAppsettings_itthingsb2c.json
 ```
 
 If you don't like the concept of working with client credentials, you can use the device login method and use you interactive user. 
 In order to be able to upload your B2C Custom Policies, you would need to specify the correct scopes, like below. 
 
 ```powershell
-Connect-AzADB2CDevicelogin -TenantName "yourtenant.onmicrosoft.com" -Scope "Application.Read.All Policy.ReadWrite.TrustFramework"
+Connect-AzADB2CDevicelogin -TenantName "itthingsb2c.onmicrosoft.com" -Scope "Application.Read.All Policy.ReadWrite.TrustFramework"
 ```
 
 ## Create a new B2C Custom Policy project
@@ -136,7 +136,7 @@ Import-AzADB2CPolicyToTenant
 Test-AzADB2CPolicy -n "ABC-WebApp"-p .\SignUpOrSignin.xml
 ```
 
-If you are in a dev/test cycle and want to speed up testing of your changes, you can add the app name in the config file `b2cAppSettings_yourtenant.json` and shorten the command to just have the `-p` argument.
+If you are in a dev/test cycle and want to speed up testing of your changes, you can add the app name in the config file `b2cAppSettings_itthingsb2c.json` and shorten the command to just have the `-p` argument.
 
 ```json
     "ClientCredentials": {
