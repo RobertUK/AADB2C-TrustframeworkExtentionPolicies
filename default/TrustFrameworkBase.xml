@@ -150,6 +150,16 @@
         </DefaultPartnerClaimTypes>
         <UserHelpText />
       </ClaimType>
+      <ClaimType Id="idpFriendlyName">
+        <DisplayName>Identity Provider Friendly Name</DisplayName>
+        <DataType>string</DataType>
+        <DefaultPartnerClaimTypes>
+          <Protocol Name="OAuth2" PartnerClaimType="idpFriendlyName" />
+          <Protocol Name="OpenIdConnect" PartnerClaimType="idpFriendlyName" />
+          <Protocol Name="SAML2" PartnerClaimType="http://schemas.microsoft.com/identity/claims/identityprovider" />
+        </DefaultPartnerClaimTypes>
+        <UserHelpText />
+      </ClaimType>
       <ClaimType Id="displayName">
         <DisplayName>Name</DisplayName>
         <DataType>string</DataType>
@@ -283,8 +293,6 @@
         <UserHelpText>Your surname (also known as family name or last name).</UserHelpText>
         <UserInputType>TextBox</UserInputType>
       </ClaimType>
-
-
     </ClaimsSchema>
     <ClaimsTransformations>
       <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
@@ -387,11 +395,10 @@
         </Metadata>
       </ContentDefinition>
       <ContentDefinition Id="api.signuporsignin">
-        <LoadUri>https://itthings.blob.core.windows.net/webb2c/templates/azureblue/unified.html</LoadUri>
+        <LoadUri>https://itthings.blob.core.windows.net/webb2c/templates/classic/unified.html</LoadUri>
         <!-- <LoadUri>~/tenant/templates/AzureBlue/unified.cshtml</LoadUri> -->
-        
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
-        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.5</DataUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.7</DataUri>
         <Metadata>
           <Item Key="DisplayName">Signin and Signup</Item>
         </Metadata>
@@ -482,6 +489,7 @@
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
             <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="facebook.com" AlwaysUseDefaultValue="true" />
+            <OutputClaim ClaimTypeReferenceId="idpFriendlyName" DefaultValue="facebook" AlwaysUseDefaultValue="true" />
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
           </OutputClaims>
           <OutputClaimsTransformations>

@@ -11,7 +11,7 @@
       <Endpoint Id="Token" UserJourneyReferenceId="RedeemRefreshToken" />
     </Endpoints>
     <UserJourneyBehaviors>
-      <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="f728451b-5292-4400-a3af-449056aaeade" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+      <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="0767870b-14e3-4ba0-bebf-da140824069b" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
       <ScriptExecution>Allow</ScriptExecution>
     </UserJourneyBehaviors>
     <TechnicalProfile Id="PolicyProfile">
@@ -24,6 +24,8 @@
         <OutputClaim ClaimTypeReferenceId="email" />
         <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
         <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        
+        <OutputClaim ClaimTypeReferenceId="idpfriendlyname" />
         <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
         <OutputClaim ClaimTypeReferenceId="extension_appOrigin" PartnerClaimType="AppOrigin" />
         <OutputClaim ClaimTypeReferenceId="groups" />
