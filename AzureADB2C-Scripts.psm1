@@ -3250,7 +3250,7 @@ function Connect-AzureADB2CDevicelogin {
             }
         }
         $DeviceCodeRequest = Invoke-RestMethod @DeviceCodeRequestParams
-        #write-host $DeviceCodeRequest
+        write-host $DeviceCodeRequest
         Write-Host $DeviceCodeRequest.message -ForegroundColor Yellow
         $url = $DeviceCodeRequest.verification_url
 
@@ -3288,15 +3288,15 @@ function Connect-AzureADB2CDevicelogin {
             Start-Sleep -Seconds 1
         }
         $retVal = $TokenRequest
-        #Write-Output $TokenRequest.access_token
+        Write-Output $TokenRequest.access_token
     }
     finally {
         try {
             $TimeoutTimer.Stop()
         }
-        catch {
+       # catch {
             # We don't care about errors here
-        }
+        #}
     }
     return $retVal
 }

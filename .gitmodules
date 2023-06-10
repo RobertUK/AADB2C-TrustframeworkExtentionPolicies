@@ -1,0 +1,8 @@
+[submodule "samples"]
+	path = samples
+	url = https://github.com/azure-ad-b2c/samples
+
+
+[submodule "policy-starterpack"]
+	path = policy-starterpack
+	url = https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack.git
