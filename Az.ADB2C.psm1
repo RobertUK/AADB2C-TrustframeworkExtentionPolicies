@@ -1517,7 +1517,7 @@ function Add-AzADB2CClaimsProvider (
     if ( "" -eq $AadTenantName -and "azuread" -eq $ProviderName.ToLower() ) {
         $AadTenantName = ($global:b2cAppSettings.ClaimsProviders | where {$_.Name -eq $ProviderName }).DomainName
     }
-    RefreshTokenIfExpired
+   # RefreshTokenIfExpired
     [xml]$ext =Get-Content -Path "$PolicyPath/$ExtPolicyFileName" -Raw
     if ((Test-Path -Path "$PolicyPath/$BasePolicyFileName" -PathType Leaf) -eq $True ) {
         [xml]$base = Get-Content -Path "$PolicyPath/$BasePolicyFileName" -Raw
@@ -2355,7 +2355,7 @@ function Import-AzADB2CHtmlContent (
     [Parameter(Mandatory=$false)][Alias('e')][string]$EndpointSuffix = "core.windows.net"
     )
 {
-    $body = (Get-Content $LocalFile)
+    $body =([System.IO.File]::ReadAllBytes($pwd.Path + $LocalFile))
     $FileName = Split-Path $LocalFile -leaf
 
     if ( "" -eq $StorageAccountName ) { $StorageAccountName = $global:b2cAppSettings.AzureStorageAccount.AccountName}
@@ -2377,13 +2377,14 @@ function Import-AzADB2CHtmlContent (
         if ( $FileName.EndsWith(".png")) { $contentType = = "image/png" }
         if ( $FileName.EndsWith(".js")) { $contentType = = "application/x-javascript" }
     }
+    
     $method = "PUT"
     $headerDate = '2014-02-14'
     $headers = @{"x-ms-version"="$headerDate"}
     $xmsdate = (get-date -format r).ToString()
     $headers.Add("x-ms-date",$xmsdate)
-    $bytes = ([System.Text.Encoding]::UTF8.GetBytes($body))
-    $contentLength = $bytes.length
+
+    $contentLength = $body.length
     $headers.Add("Content-Length","$contentLength")
     #$headers.Add("Content-Type","$contentType")
     $headers.Add("x-ms-blob-type","BlockBlob")

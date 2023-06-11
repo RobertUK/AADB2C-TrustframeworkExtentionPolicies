@@ -1,0 +1,107 @@
+{
+    "TenantName": "itthingsb2c.onmicrosoft.com",
+    "ProjectPrefix": "demo",
+    "StarterPack": "SocialAndLocalAccounts",
+    "IefAppName": "IdentityExperienceFramework",
+    "IefProxyAppName": "ProxyIdentityExperienceFramework",    
+    "InstrumentationKey":  "0767870b-14e3-4ba0-bebf-da140824069b",
+    
+    "ClientCredentials": { 
+        "client_id": "8b212da4-8e39-4a2d-aff8-8c70abdbee0e6", 
+        "client_secret": "4qv8Q~PtwwVPxwK8ZY29SY6KOzxqubOcTw0VPbjQ" 
+    },
+
+
+    "AzureStorageAccount":  {
+        "AccountName":  "itthings",
+        "AccountKey":  "3riZNMFsvpLbuNQ4joHYbw8nLvcN14XguERFlMMN8OxvVZCcgbNXbaqx8VhwIib3B4Ux+BemuwYe+AStROd35Q==",
+        "ContainerName":  "public",
+        "Path":  "b2c",
+        "EndpointSuffix":  "core.windows.net",
+        "docLink":  "https://docs.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-ui-customization#2-create-an-azure-blob-storage-account"
+    },
+
+    "CustomAttributes": {
+        "Enabled": true,
+        "AppDisplayName": "b2c-extensions-app",
+        "ObjectId": "",
+        "AppID": "",
+        "docLink": "https://docs.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-custom-attributes"
+    },
+
+    "UxCustomization":  {
+        "Enabled":  true,
+        "docLink":  "https://docs.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-ui-customization"
+    },
+"ClaimsProviders":  [
+        {
+            "Enabled":  true,
+            "Name":  "facebook",
+            "client_id":  "1591457374605673",
+            "client_secret":  "41441d795a4577c6b05645ee129b2e90",
+            "use":  "sig",
+            "SecretName":  "FacebookSecret",
+            "docLink":  "https://docs.microsoft.com/en-us/azure/active-directory-b2c/identity-provider-facebook"
+        },
+        {
+            "Enabled":  false,
+            "Name":  "msa",
+            "client_id":  "0306b457-683b-4941-ac88-ea5876649825",
+            "client_secret":  "rwm8Q~S62yIv2c2hOFn1mhXI4MWHcPaVxc.SJdcj",
+            "use":  "sig",
+            "SecretName":  "MicrosoftAccountSecret",
+            "docLink":  "https://docs.microsoft.com/en-us/azure/active-directory-b2c/identity-provider-microsoft-account-custom"
+        },
+        {
+            "Enabled":  false,
+            "Name":  "google",
+            "client_id":  "37277257186-v6vefm376h91d89ncsj2elhur15ol6iq.apps.googleusercontent.com",
+            "client_secret":  "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",
+            "use":  "sig",
+            "SecretName":  "GoogleSecret",
+            "docLink":  "https://docs.microsoft.com/en-us/azure/active-directory-b2c/identity-provider-google-custom"
+        },
+        {
+            "Enabled":  false,
+            "Name":  "linkedin",
+            "client_id":  "78ko5x2dd5my14",
+            "client_secret":  "bXCwyMMP4lkHdDwa",
+            "use":  "enc",
+            "SecretName":  "LinkedInSecret",
+            "docLink":  "https://docs.microsoft.com/en-us/azure/active-directory-b2c/identity-provider-twitter-custom"
+        },
+        {
+            "Enabled":  false,
+            "Name":  "amazon",
+            "client_id":  "amzn1.application-oa2-client.029a9735514244ca8635dda00cc2c0f2",
+            "client_secret":  "f72dca411009a7b2a6ea20c1413d54088d9f4e2fa799a852d5a3cfb65ac0155c",
+            "use":  "sig",
+            "SecretName":  "AmazonSecret",
+            "docLink":  "https://docs.microsoft.com/en-us/azure/active-directory-b2c/identity-provider-amazon-custom"
+        },
+
+        {
+            "Enabled":  false,
+            "Name":  "github",
+            "client_id":  "2557cc4334aff0dae022",
+            "client_secret":  "aa627537488804f38ed493abee10eb3795b0b96f",
+            "use":  "sig",
+            "SecretName":  "GithubSecret",
+            "docLink":  "https://docs.microsoft.com/en-us/azure/active-directory-b2c/identity-provider-amazon-custom"
+        },
+        
+        {
+            "Enabled":  false,
+            "Name":  "azuread",
+            "client_id":  "69520ca6-defe-4a2e-b303-c4f6b10b2b16",
+            "client_secret":  "pMP8Q~NO~vl.pNVAUR0kDorFUialPU8awbxiMaNF",
+            "use":  "sig",
+            "SecretName":  "ITThingsSecret",
+            "DomainName":  "itthings.co.uk",
+            "docLink":  "https://docs.microsoft.com/en-us/azure/active-directory-b2c/identity-provider-azure-ad-single-tenant-custom"
+        }
+
+
+    ]
+        
+}
