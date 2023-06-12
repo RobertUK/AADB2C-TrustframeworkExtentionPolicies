@@ -24,6 +24,9 @@
         <UserInputType>Password</UserInputType>
         <PredicateValidationReference Id="CustomPassword" />
       </ClaimType>
+
+ 
+
     </ClaimsSchema>
     <Predicates>
       <Predicate Id="LengthRange" Method="IsLengthRange">
@@ -89,7 +92,7 @@
         </Metadata>
       </ContentDefinition>
       <ContentDefinition Id="api.idpselections">
-        <LoadUri>https://itthings.blob.core.windows.net/public/b2c/idpSelectodr.cshtml</LoadUri>
+        <LoadUri>https://itthings.blob.core.windows.net/public/b2c/idpSelector.cshtml</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.1</DataUri>
         <Metadata>
@@ -410,6 +413,8 @@
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" />
+             <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
+             <OutputClaim ClaimTypeReferenceId="otherMails" PartnerClaimType="emails"/>   
           </OutputClaims>
           <OutputClaimsTransformations>
             <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
@@ -421,6 +426,10 @@
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
+
+     
+
+
     <ClaimsProvider>
       <DisplayName>Local Account</DisplayName>
       <TechnicalProfiles>

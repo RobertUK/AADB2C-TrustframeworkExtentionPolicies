@@ -24,10 +24,14 @@ Connect-AzADB2CDevicelogin -TenantName "itthingsb2c.onmicrosoft.com" -Scope "App
 
 Import-AzADB2CPolicyToTenant 
 
+Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignIn.xml -Incognito $False -NewWindow $False #'-Firefox $true
+
+
+Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignIn.xml
 
 Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignInWithPhone.xml
 
-Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignIn.xml
+
 
 #New-AzADB2CPolicyProject -PolicyPrefix "smfa" -PolicyType "SocialAndLocalAccountsWithMfa"
 
@@ -68,5 +72,33 @@ New-AzADB2CPolicyKey -KeyContainerName "AzureStorageSecret" -KeyType "secret" -K
 Import-AzADB2CHtmlContent -f "\html\idpSelector.cshtml" -a "itthings" -p "public/b2c" -k "3riZNMFsvpLbuNQ4joHYbw8nLvcN14XguERFlMMN8OxvVZCcgbNXbaqx8VhwIib3B4Ux+BemuwYe+AStROd35Q==" 
 Import-AzADB2CHtmlContent -f "\html\multifactor-1.0.0.cshtml" -a "itthings" -p "public/b2c" -k "3riZNMFsvpLbuNQ4joHYbw8nLvcN14XguERFlMMN8OxvVZCcgbNXbaqx8VhwIib3B4Ux+BemuwYe+AStROd35Q==" 
 
+$username = "robert@itthingsb2c.onmicrosoft.com"
+$password = convertto-securestring -String "Rooftop1!" -AsPlainText -Force
+
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+
+#
+Connect-AzureAD -t "itthingsb2c.onmicrosoft.com" -Credential $cred
+#
+
+# 1. get the user
+$user = (Get-AzureADUser -ObjectId  "e8b61007-e6fb-4313-94ad-4583502aef63")
+ 
+# 2. create the group
+$group = New-AzureADGroup -DisplayName "Blog Administrators" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
+ 
+# 3. add the user as a member of the group
+Add-AzureADGroupMember -ObjectId $group.ObjectID -RefObjectId $user.ObjectID
+ 
+# 4. get the app's service principal
+$spo =(Get-AzureADServicePrincipal -Filter "DisplayName eq 'Blog'")
+ 
+# 5. find the role by name
+$roleAppAdmin = ($spo.AppRoles | Where {$_.DisplayName -eq "admin"})
+ 
+# 6. Assign the group to the AppRole
+New-AzureADGroupAppRoleAssignment -ObjectId $group.ObjectId -PrincipalId $group.ObjectId -ResourceId $spo.ObjectId -Id $roleAppAdmin.id
 
 
+
+Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignIn.xml
