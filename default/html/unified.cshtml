@@ -1054,7 +1054,7 @@
             font-size: 20px;
         }
 
-        .unified_container .row .panel-default #api .divider h2 {
+        @*.unified_container.row.panel-default#api.divider{display:none;}*@.unified_container .row .panel-default #api .divider h2 {
             display: block;
             font-size: 0.8em;
         }
@@ -1062,6 +1062,15 @@
         .unified_container .row .panel-default #api .divider:nth-last-of-type(2) {
             display: none;
         }
+
+
+
+ .unified_container .row .panel-default #api .divider h2  {
+                display: block;
+                font-size: 0.8em;
+            }
+
+            
 
         .unified_container .row .panel-default #api .localAccount {
             top: 10px;
@@ -1436,33 +1445,24 @@
                             alt="Company Logo" />
 
                         <div id="api" role="main"></div>
-                        <script type="text/javascript">
-                            var el = document.getElementById("GoogleExchange");
-
-
-                            document.getElementById("GoogleExchange").style.backgroundImage = "url(https://itthingsb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/github.svg)";
-
-                            document.getElementById("GithubExchange").style.backgroundImage = "url(https://itthingsb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/github.svg)";
-
-                            document.getElementById("GithubExchange").onmouseover = function () {
-                                document.getElementById("GithubExchange").style.backgroundImage = "url('https://itthingsb2c.b2clogin.com/static/tenant/templates/idp_logos/white/github.svg')";
-                            };
-
-                            document.getElementById("GithubExchange").onmouseout = function () {
-                                document.getElementById("GithubExchange").style.backgroundImage = "url('https://itthingsb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/github.svg')";
-                            };
-
-
-                            alert(el);
-
-                            alert(4);
-
-                        </script>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script type="text/javascript">
+    var el = document.getElementById("GoogleExchange");
+
+    document.getElementById("GithubExchange").style.backgroundImage = "url(https://itthingsb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/github.svg)";
+
+    document.getElementById("GithubExchange").onmouseover = function () {
+        document.getElementById("GithubExchange").style.backgroundImage = "url('https://itthingsb2c.b2clogin.com/static/tenant/templates/idp_logos/white/github.svg')";
+    };
+
+    document.getElementById("GithubExchange").onmouseout = function () {
+        document.getElementById("GithubExchange").style.backgroundImage = "url('https://itthingsb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/github.svg')";
+    };
+</script>
 
 </html>

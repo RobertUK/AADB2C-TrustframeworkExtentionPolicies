@@ -17,18 +17,13 @@
            The UI validates that the user correctly re-entered their password during account creation based on
       these 
            claim types.	  -->
-      <ClaimType Id="newPassword">
+          <ClaimType Id="newPassword">
         <DisplayName>New Password</DisplayName>
         <DataType>string</DataType>
         <UserHelpText>Enter new password</UserHelpText>
         <UserInputType>Password</UserInputType>
         <PredicateValidationReference Id="CustomPassword" />
       </ClaimType>
-
-
-
- 
-
     </ClaimsSchema>
     <Predicates>
       <Predicate Id="LengthRange" Method="IsLengthRange">
@@ -178,6 +173,8 @@
     </ContentDefinitions>
   </BuildingBlocks>
   <ClaimsProviders>
+   
+
     <ClaimsProvider>
       <DisplayName>Facebook</DisplayName>
       <TechnicalProfiles>
@@ -185,12 +182,13 @@
           <Metadata>
             <Item Key="client_id">1591457374605673</Item>
             <Item Key="scope">email public_profile</Item>
-            <Item Key="ClaimsEndpoint">
-              https://graph.facebook.com/me?fields=id,first_name,last_name,name,email</Item>
+            <Item Key="ClaimsEndpoint">https://graph.facebook.com/me?fields=id,first_name,last_name,name,email</Item>
           </Metadata>
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
+
+
     <ClaimsProvider>
       <DisplayName>Local Account SignIn</DisplayName>
       <TechnicalProfiles>
@@ -256,7 +254,7 @@
             <OutputClaim ClaimTypeReferenceId="issuerUserId" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="github.com" AlwaysUseDefaultValue="true" />
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
-             <OutputClaim ClaimTypeReferenceId="idpFriendlyName" DefaultValue="Github" AlwaysUseDefaultValue="true" />
+            <OutputClaim ClaimTypeReferenceId="idpFriendlyName" DefaultValue="Github" AlwaysUseDefaultValue="true" />
           </OutputClaims>
           <OutputClaimsTransformations>
             <OutputClaimsTransformation ReferenceId="CreateIssuerUserId" />
@@ -299,7 +297,7 @@
             <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName.localized" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="linkedin.com" AlwaysUseDefaultValue="true" />
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
-             <OutputClaim ClaimTypeReferenceId="idpFriendlyName" DefaultValue="LinkedIn" AlwaysUseDefaultValue="true" />
+            <OutputClaim ClaimTypeReferenceId="idpFriendlyName" DefaultValue="LinkedIn" AlwaysUseDefaultValue="true" />
           </OutputClaims>
           <OutputClaimsTransformations>
             <OutputClaimsTransformation ReferenceId="ExtractGivenNameFromLinkedInResponse" />
@@ -341,7 +339,7 @@
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="google.com" />
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-             <OutputClaim ClaimTypeReferenceId="idpFriendlyName" DefaultValue="Google" AlwaysUseDefaultValue="true" />
+            <OutputClaim ClaimTypeReferenceId="idpFriendlyName" DefaultValue="Google" AlwaysUseDefaultValue="true" />
           </OutputClaims>
           <OutputClaimsTransformations>
             <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
@@ -379,7 +377,7 @@
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="amazon.com" />
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-             <OutputClaim ClaimTypeReferenceId="idpFriendlyName" DefaultValue="Amazon" AlwaysUseDefaultValue="true" />
+            <OutputClaim ClaimTypeReferenceId="idpFriendlyName" DefaultValue="Amazon" AlwaysUseDefaultValue="true" />
           </OutputClaims>
           <OutputClaimsTransformations>
             <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
@@ -419,9 +417,9 @@
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" />
-             <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
-             <OutputClaim ClaimTypeReferenceId="otherMails" PartnerClaimType="emails"/>   
-              <OutputClaim ClaimTypeReferenceId="idpFriendlyName" DefaultValue="ITThings Partner" AlwaysUseDefaultValue="true" />
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
+            <OutputClaim ClaimTypeReferenceId="otherMails" PartnerClaimType="emails" />
+            <OutputClaim ClaimTypeReferenceId="idpFriendlyName" DefaultValue="ITThings Partner" AlwaysUseDefaultValue="true" />
           </OutputClaims>
           <OutputClaimsTransformations>
             <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
@@ -433,10 +431,6 @@
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
-
-     
-
-
     <ClaimsProvider>
       <DisplayName>Local Account</DisplayName>
       <TechnicalProfiles>

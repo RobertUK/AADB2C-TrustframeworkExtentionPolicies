@@ -24,20 +24,28 @@ Connect-AzADB2CDevicelogin -TenantName "itthingsb2c.onmicrosoft.com" -Scope "App
 
 Import-AzADB2CPolicyToTenant 
 
+
+
+
+
 #Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignIn.xml -Incognito $False -NewWindow $False #'-Firefox $true
+#cd G:\git\AADB2C-TrustframeworkExtentionPolicies\old2
 
 
-Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignIn.xml
+
+Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignIn.xml 
 
 Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignInWithPhone.xml
 
 
 
+
+Repair-AzADB2CUserJourneyOrder
 #New-AzADB2CPolicyProject -PolicyPrefix "smfa" -PolicyType "SocialAndLocalAccountsWithMfa"
 
 Set-AzADB2CCustomizeUX -FullContentDefinition  -DownloadHtmlTemplates -urlBaseUx "https://itthings.blob.core.windows.net/public/b2c"
  
- 
+ Set-AzADB2CAppInsights -InstrumentationKey "0767870b-14e3-4ba0-bebf-da140824069b" 
 
 Add-AzADB2CClaimsProvider -ProviderName "google" -client_id "37277257186-v6vefm376h91d89ncsj2elhur15ol6iq.apps.googleusercontent.com" -BasePolicyFileName "Phone_Email_Base.xml"
 
@@ -56,6 +64,8 @@ New-AzADB2CPolicyKey -KeyContainerName "MicrosoftAccountSecret" -KeyType "secret
 New-AzADB2CPolicyKey -KeyContainerName "FacebookSecret" -KeyType "secret" -KeyUse "sig" -Secret "41441d795a4577c6b05645ee129b2e90"
 New-AzADB2CPolicyKey -KeyContainerName "AzureStorageSecret" -KeyType "secret" -KeyUse "sig" -Secret "3riZNMFsvpLbuNQ4joHYbw8nLvcN14XguERFlMMN8OxvVZCcgbNXbaqx8VhwIib3B4Ux+BemuwYe+AStROd35Q=="
 
+New-AzADB2CPolicyKey -KeyContainerName "ITThingsAppSecret" -KeyType "secret" -KeyUse "sig" -Secret "pMP8Q~NO~vl.pNVAUR0kDorFUialPU8awbxiMaNF"
+
  Import-Module ..\Az.ADB2C.psm1 -Force
 
  Import-AzADB2CHtmlContent -f "\html\idp_logos\white\itthings.png" -a "itthings" -p "public/b2c/idp_logos/white" -k "3riZNMFsvpLbuNQ4joHYbw8nLvcN14XguERFlMMN8OxvVZCcgbNXbaqx8VhwIib3B4Ux+BemuwYe+AStROd35Q==" 
@@ -64,7 +74,7 @@ New-AzADB2CPolicyKey -KeyContainerName "AzureStorageSecret" -KeyType "secret" -K
  Import-AzADB2CHtmlContent -f "\html\idp_logos\white\github.svg" -a "itthings" -p "public/b2c/idp_logos/white" -k "3riZNMFsvpLbuNQ4joHYbw8nLvcN14XguERFlMMN8OxvVZCcgbNXbaqx8VhwIib3B4Ux+BemuwYe+AStROd35Q==" 
  Import-AzADB2CHtmlContent -f "\html\idp_logos\colored\github.svg" -a "itthings" -p "public/b2c/idp_logos/colored" -k "3riZNMFsvpLbuNQ4joHYbw8nLvcN14XguERFlMMN8OxvVZCcgbNXbaqx8VhwIib3B4Ux+BemuwYe+AStROd35Q==" 
 
-
+ cd G:\test\AADB2C-TrustframeworkExtentionPolicies\old2
 
   Import-AzADB2CHtmlContent -f "\html\unified.cshtml" -a "itthings" -p "public/b2c" -k "3riZNMFsvpLbuNQ4joHYbw8nLvcN14XguERFlMMN8OxvVZCcgbNXbaqx8VhwIib3B4Ux+BemuwYe+AStROd35Q==" 
   Import-AzADB2CHtmlContent -f "\html\exception.cshtml" -a "itthings" -p "public/b2c" -k "3riZNMFsvpLbuNQ4joHYbw8nLvcN14XguERFlMMN8OxvVZCcgbNXbaqx8VhwIib3B4Ux+BemuwYe+AStROd35Q==" 
@@ -85,7 +95,7 @@ Connect-AzureAD -t "itthingsb2c.onmicrosoft.com" -Credential $cred
 #
 
 # 1. get the user
-$user = (Get-AzureADUser -ObjectId  "e8b61007-e6fb-4313-94ad-4583502aef63")
+$user = (Get-AzureADUser -ObjectId  "24a64dd4-54e0-4363-ad17-9ab23f7a4982")
  
 # 2. create the group
 $group = New-AzureADGroup -DisplayName "Blog Administrators" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
