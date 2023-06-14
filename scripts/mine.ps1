@@ -10,13 +10,13 @@ cd G:\git\AADB2C-TrustframeworkExtentionPolicies\default
 
 
 
-# Connect-AzADB2C -ConfigPath .\b2cAppsettings_itthingsb2c.json -TenantName "itthingsb2c.onmicrosoft.com"
+# Connect-AzADB2C -ConfigPath .\b2cAppsettings_itthingsb2c.json -TenantName "itthingsb2c.onmicrosoft.com" -
 
 
 #Connect-AzADB2CDevicelogin -TenantName "itthingsb2c.onmicrosoft.com" -Scope "Directory.ReadWrite.All" -ClientID "68958472-9497-4daf-b29c-e4140fb12e6d"
 
 
-Connect-AzADB2CDevicelogin -TenantName "itthingsb2c.onmicrosoft.com" -Scope "Application.Read.All Policy.ReadWrite.TrustFramework" -ClientID "68958472-9497-4daf-b29c-e4140fb12e6d"
+Connect-AzADB2CDevicelogin -TenantName "itthingsb2c.onmicrosoft.com" -Scope "Application.Read.All Policy.ReadWrite.TrustFramework" -ClientID "68958472-9497-4daf-b29c-e4140fb12e6d" 
 
 #Connect-AzADB2CDevicelogin -TenantName "itthingsb2c.onmicrosoft.com" -Scope "Directory.ReadWrite.All" -ClientID "c94fd5ca-09d3-4740-8998-627c22e2bdce"
 
@@ -24,7 +24,7 @@ Connect-AzADB2CDevicelogin -TenantName "itthingsb2c.onmicrosoft.com" -Scope "App
 
 Import-AzADB2CPolicyToTenant 
 
-Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignIn.xml -Incognito $False -NewWindow $False #'-Firefox $true
+#Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignIn.xml -Incognito $False -NewWindow $False #'-Firefox $true
 
 
 Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignIn.xml
@@ -71,6 +71,9 @@ New-AzADB2CPolicyKey -KeyContainerName "AzureStorageSecret" -KeyType "secret" -K
   Import-AzADB2CHtmlContent -f "\html\selfAsserted.cshtml" -a "itthings" -p "public/b2c" -k "3riZNMFsvpLbuNQ4joHYbw8nLvcN14XguERFlMMN8OxvVZCcgbNXbaqx8VhwIib3B4Ux+BemuwYe+AStROd35Q==" 
 Import-AzADB2CHtmlContent -f "\html\idpSelector.cshtml" -a "itthings" -p "public/b2c" -k "3riZNMFsvpLbuNQ4joHYbw8nLvcN14XguERFlMMN8OxvVZCcgbNXbaqx8VhwIib3B4Ux+BemuwYe+AStROd35Q==" 
 Import-AzADB2CHtmlContent -f "\html\multifactor-1.0.0.cshtml" -a "itthings" -p "public/b2c" -k "3riZNMFsvpLbuNQ4joHYbw8nLvcN14XguERFlMMN8OxvVZCcgbNXbaqx8VhwIib3B4Ux+BemuwYe+AStROd35Q==" 
+
+
+Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignIn.xml
 
 $username = "robert@itthingsb2c.onmicrosoft.com"
 $password = convertto-securestring -String "Rooftop1!" -AsPlainText -Force

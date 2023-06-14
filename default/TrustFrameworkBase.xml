@@ -312,6 +312,18 @@
       </ClaimType>
 
 
+ <ClaimType Id="idpFriendlyName">
+        <DisplayName>Identity Provider Friendly Name</DisplayName>
+        <DataType>string</DataType>
+        <DefaultPartnerClaimTypes>
+          <Protocol Name="OAuth2" PartnerClaimType="idpFriendlyName" />
+          <Protocol Name="OpenIdConnect" PartnerClaimType="idpFriendlyName" />
+          <Protocol Name="SAML2" PartnerClaimType="http://schemas.microsoft.com/identity/claims/identityprovider" />
+        </DefaultPartnerClaimTypes>
+        <UserHelpText />
+      </ClaimType>
+
+
     
     </ClaimsSchema>
     <ClaimsTransformations>
@@ -562,6 +574,7 @@
             <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="facebook.com" AlwaysUseDefaultValue="true" />
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
+             <OutputClaim ClaimTypeReferenceId="idpFriendlyName" DefaultValue="Facebook" AlwaysUseDefaultValue="true" />
           </OutputClaims>
           <OutputClaimsTransformations>
             <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
@@ -605,6 +618,7 @@
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
             <OutputClaim ClaimTypeReferenceId="userPrincipalName" PartnerClaimType="upn" />
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
+             <OutputClaim ClaimTypeReferenceId="idpFriendlyName" DefaultValue="Local Account" AlwaysUseDefaultValue="true" />
           </OutputClaims>
         </TechnicalProfile>
       </TechnicalProfiles>

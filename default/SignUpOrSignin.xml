@@ -27,7 +27,7 @@
 
         <OutputClaim ClaimTypeReferenceId="groups" />
         <OutputClaim ClaimTypeReferenceId="roles" />
-        
+         <OutputClaim ClaimTypeReferenceId="idpfriendlyname" />
       </OutputClaims>
       <SubjectNamingInfo ClaimType="sub" />
     </TechnicalProfile>
