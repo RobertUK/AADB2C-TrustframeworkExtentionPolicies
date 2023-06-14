@@ -17,7 +17,7 @@
            The UI validates that the user correctly re-entered their password during account creation based on
       these 
            claim types.	  -->
-          <ClaimType Id="newPassword">
+      <ClaimType Id="newPassword">
         <DisplayName>New Password</DisplayName>
         <DataType>string</DataType>
         <UserHelpText>Enter new password</UserHelpText>
@@ -173,8 +173,6 @@
     </ContentDefinitions>
   </BuildingBlocks>
   <ClaimsProviders>
-   
-
     <ClaimsProvider>
       <DisplayName>Facebook</DisplayName>
       <TechnicalProfiles>
@@ -187,8 +185,6 @@
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
-
-
     <ClaimsProvider>
       <DisplayName>Local Account SignIn</DisplayName>
       <TechnicalProfiles>

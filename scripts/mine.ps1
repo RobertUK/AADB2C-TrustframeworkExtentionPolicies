@@ -35,6 +35,9 @@ Import-AzADB2CPolicyToTenant
 
 Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignIn.xml 
 
+
+
+
 Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignInWithPhone.xml
 
 

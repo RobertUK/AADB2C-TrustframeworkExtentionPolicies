@@ -37,8 +37,8 @@
         <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true"
           DefaultValue="{Policy:TenantObjectId}" />
 
-        <!-- <OutputClaim ClaimTypeReferenceId="groups" />
-        <OutputClaim ClaimTypeReferenceId="roles" /> -->
+        <OutputClaim ClaimTypeReferenceId="groups" />
+        <OutputClaim ClaimTypeReferenceId="roles" />
         <OutputClaim ClaimTypeReferenceId="idpfriendlyname" />
       </OutputClaims>
       <SubjectNamingInfo ClaimType="sub" />
