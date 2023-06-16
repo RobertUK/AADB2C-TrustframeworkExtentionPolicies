@@ -535,31 +535,31 @@
       </OrchestrationSteps>
       <ClientDefinition ReferenceId="DefaultWeb" />
     </UserJourney>
-    <UserJourney Id="ProfileEdit">
-      <OrchestrationSteps>
-        <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselections">
-          <ClaimsProviderSelections>
-            <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
-            <ClaimsProviderSelection TargetClaimsExchangeId="GitHubExchange" />
-            <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
-            <ClaimsProviderSelection TargetClaimsExchangeId="AmazonExchange" />
-            <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
-            <ClaimsProviderSelection TargetClaimsExchangeId="ITThingsExchange" />
-            <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
-          </ClaimsProviderSelections>
-        </OrchestrationStep>
-        <OrchestrationStep Order="2" Type="ClaimsExchange">
-          <ClaimsExchanges>
-            <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
-            <ClaimsExchange Id="GitHubExchange" TechnicalProfileReferenceId="GitHub-OAuth2" />
-            <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
-            <ClaimsExchange Id="AmazonExchange" TechnicalProfileReferenceId="Amazon-OAUTH" />
-            <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
-            <ClaimsExchange Id="ITThingsExchange" TechnicalProfileReferenceId="ITThings-OIDC" />
-            <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-      </OrchestrationSteps>
-    </UserJourney>
-  </UserJourneys>
+      <UserJourney Id="ProfileEdit">
+        <OrchestrationSteps>
+          <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselections">
+            <ClaimsProviderSelections>
+              <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
+              <ClaimsProviderSelection TargetClaimsExchangeId="GitHubExchange" />
+              <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
+              <ClaimsProviderSelection TargetClaimsExchangeId="AmazonExchange" />
+              <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
+              <ClaimsProviderSelection TargetClaimsExchangeId="ITThingsExchange" />
+              <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
+            </ClaimsProviderSelections>
+          </OrchestrationStep>
+          <OrchestrationStep Order="2" Type="ClaimsExchange">
+            <ClaimsExchanges>
+              <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+              <ClaimsExchange Id="GitHubExchange" TechnicalProfileReferenceId="GitHub-OAuth2" />
+              <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
+              <ClaimsExchange Id="AmazonExchange" TechnicalProfileReferenceId="Amazon-OAUTH" />
+              <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
+              <ClaimsExchange Id="ITThingsExchange" TechnicalProfileReferenceId="ITThings-OIDC" />
+              <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+        </OrchestrationSteps>
+      </UserJourney>
+    </UserJourneys>
 </TrustFrameworkPolicy>

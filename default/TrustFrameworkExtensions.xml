@@ -267,7 +267,7 @@
       <Domain>linkedin.com</Domain>
       <DisplayName>LinkedIn</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="LinkedIn-OAUTH">
+        <TechnicalProfile Id="LinkedIn-OAuth">
           <DisplayName>LinkedIn</DisplayName>
           <Protocol Name="OAuth2" />
           <Metadata>
@@ -293,6 +293,7 @@
             <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName.localized" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="linkedin.com" AlwaysUseDefaultValue="true" />
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
+            <OutputClaim ClaimTypeReferenceId="identityProviderAccessToken" PartnerClaimType="{oauth2:access_token}" />
             <OutputClaim ClaimTypeReferenceId="idpFriendlyName" DefaultValue="LinkedIn" AlwaysUseDefaultValue="true" />
           </OutputClaims>
           <OutputClaimsTransformations>
@@ -388,7 +389,7 @@
       <Domain>ITThings.co.uk</Domain>
       <DisplayName>ITThings Partner</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="Itthings.co.uk-OIDC">
+        <TechnicalProfile Id="ITThings-OAUTH">
           <DisplayName>ITThings Partner</DisplayName>
           <Description>Login with your ITThings account</Description>
           <Protocol Name="OpenIdConnect" />
@@ -450,7 +451,7 @@
             <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
             <ClaimsProviderSelection TargetClaimsExchangeId="GithubExchange" />
             <ClaimsProviderSelection TargetClaimsExchangeId="AmazonExchange" />
-            <ClaimsProviderSelection TargetClaimsExchangeId="ITThingsPartner" />
+            <ClaimsProviderSelection TargetClaimsExchangeId="ITThingsExchange" />
             <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
           </ClaimsProviderSelections>
           <ClaimsExchanges>
@@ -471,7 +472,7 @@
             <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
             <ClaimsExchange Id="GithubExchange" TechnicalProfileReferenceId="Github-OAUTH" />
             <ClaimsExchange Id="AmazonExchange" TechnicalProfileReferenceId="Amazon-OAUTH" />
-            <ClaimsExchange Id="ITThingsPartner" TechnicalProfileReferenceId="Itthings.co.uk-OIDC" />
+            <ClaimsExchange Id="ITThingsExchange" TechnicalProfileReferenceId="ITThings-OAUTH" />
             <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
           </ClaimsExchanges>
         </OrchestrationStep>
@@ -497,6 +498,32 @@
         in the 
              previous step. If so, then the phone number is stored in the directory for future authentication 
              requests. -->
+      </OrchestrationSteps>
+    </UserJourney>
+    <UserJourney Id="ProfileEdit">
+      <OrchestrationSteps>
+        <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselections">
+          <ClaimsProviderSelections>
+            <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
+            <ClaimsProviderSelection TargetClaimsExchangeId="GitHubExchange" />
+            <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
+            <ClaimsProviderSelection TargetClaimsExchangeId="AmazonExchange" />
+            <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
+            <ClaimsProviderSelection TargetClaimsExchangeId="ITThingsExchange" />
+            <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
+          </ClaimsProviderSelections>
+        </OrchestrationStep>
+        <OrchestrationStep Order="2" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+            <ClaimsExchange Id="GitHubExchange" TechnicalProfileReferenceId="GitHub-OAUTH" />
+            <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
+            <ClaimsExchange Id="AmazonExchange" TechnicalProfileReferenceId="Amazon-OAUTH" />
+            <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
+            <ClaimsExchange Id="ITThingsExchange" TechnicalProfileReferenceId="ITThings-OAUTH" />
+            <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
       </OrchestrationSteps>
     </UserJourney>
   </UserJourneys>

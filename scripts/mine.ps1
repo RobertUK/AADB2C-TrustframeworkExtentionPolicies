@@ -44,6 +44,8 @@ Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignInWithPhone.xml
 
 
 Repair-AzADB2CUserJourneyOrder
+
+
 #New-AzADB2CPolicyProject -PolicyPrefix "smfa" -PolicyType "SocialAndLocalAccountsWithMfa"
 
 Set-AzADB2CCustomizeUX -FullContentDefinition  -DownloadHtmlTemplates -urlBaseUx "https://itthings.blob.core.windows.net/public/b2c"
@@ -98,7 +100,7 @@ Connect-AzureAD -t "itthingsb2c.onmicrosoft.com" -Credential $cred
 #
 
 # 1. get the user
-$user = (Get-AzureADUser -ObjectId  "24a64dd4-54e0-4363-ad17-9ab23f7a4982")
+$user = (Get-AzureADUser -ObjectId  "175abcb5-b004-4594-aaf9-de31545c817b")
  
 # 2. create the group
 $group = New-AzureADGroup -DisplayName "Blog Administrators" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
