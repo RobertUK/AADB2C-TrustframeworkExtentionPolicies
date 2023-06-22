@@ -100,7 +100,7 @@ Connect-AzureAD -t "itthingsb2c.onmicrosoft.com" -Credential $cred
 #
 
 # 1. get the user
-$user = (Get-AzureADUser -ObjectId  "175abcb5-b004-4594-aaf9-de31545c817b")
+$user = (Get-AzureADUser -ObjectId  "e02a77f6-9eaf-44f2-9c4b-99158f942ff3")
  
 # 2. create the group
 $group = New-AzureADGroup -DisplayName "Blog Administrators" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
@@ -119,4 +119,4 @@ New-AzureADGroupAppRoleAssignment -ObjectId $group.ObjectId -PrincipalId $group.
 
 
 
-Test-AzADB2CPolicy -n "IEF-Test-App"-p .\SignUpOrSignIn.xml
+Test-AzADB2CPolicy -n "Blog"-p .\SignUpOrSignIn.xml

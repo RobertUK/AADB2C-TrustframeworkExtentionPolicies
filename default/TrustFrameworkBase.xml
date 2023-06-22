@@ -1322,8 +1322,8 @@
             Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
           <Metadata>
             <!-- TODO: change this -->
-            <Item Key="ServiceUrl">
-              https://graph-proxy-authz.azurewebsites.net/api/GetAppRoleAssignmentsMSGraph?code=s0Qe7c-OkFKgUEE1HmSzWBbiyOAeDHIDJhtS0-bcF81TAzFuOKpT2A==</Item>
+            <Item Key="ServiceUrl">https://rolemember.azurewebsites.net/api/GetUserAppRoleAssignment?code=T7YZt4gdqIqEjtbf2gJy8UwJi5X3l9ARa8EFWlfbr4AMAzFue7v5aw==
+             </Item>
             <Item Key="AuthenticationType">None</Item>
             <Item Key="SendClaimsIn">Body</Item>
             <Item Key="AllowInsecureAuthInProduction">true</Item>
