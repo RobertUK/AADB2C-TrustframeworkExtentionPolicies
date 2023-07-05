@@ -81,7 +81,7 @@
     <ContentDefinitions>
       <!-- This content definition is to render an error page that displays unhandled errors. -->
       <ContentDefinition Id="api.error">
-        <LoadUri>https://itthings.blob.core.windows.net/public/b2c/exception.cshtml</LoadUri>
+        <LoadUri>https://weblol.blob.core.windows.net/public/b2c/unified.cshtml</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.1</DataUri>
         <Metadata>
@@ -89,7 +89,7 @@
         </Metadata>
       </ContentDefinition>
       <ContentDefinition Id="api.idpselections">
-        <LoadUri>https://itthings.blob.core.windows.net/public/b2c/idpSelector.cshtml</LoadUri>
+        <LoadUri>https://weblol.blob.core.windows.net/public/b2c/idpSelector.cshtml</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.1</DataUri>
         <Metadata>
@@ -98,7 +98,7 @@
         </Metadata>
       </ContentDefinition>
       <ContentDefinition Id="api.idpselections.signup">
-        <LoadUri>https://itthings.blob.core.windows.net/public/b2c/idpSelector.cshtml</LoadUri>
+        <LoadUri>https://weblol.blob.core.windows.net/public/b2c/idpSelector.cshtml</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.1</DataUri>
         <Metadata>
@@ -107,7 +107,7 @@
         </Metadata>
       </ContentDefinition>
       <ContentDefinition Id="api.signuporsignin">
-        <LoadUri>https://itthings.blob.core.windows.net/public/b2c/unified.cshtml</LoadUri>
+        <LoadUri>https://weblol.blob.core.windows.net/public/b2c/unified.cshtml</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.5</DataUri>
         <Metadata>
@@ -115,7 +115,7 @@
         </Metadata>
       </ContentDefinition>
       <ContentDefinition Id="api.phonefactor">
-        <LoadUri>https://itthings.blob.core.windows.net/public/b2c/multifactor-1.0.0.cshtml</LoadUri>
+        <LoadUri>https://weblol.blob.core.windows.net/public/b2c/multifactor-1.0.0.cshtml</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.5</DataUri>
         <Metadata>
@@ -123,7 +123,7 @@
         </Metadata>
       </ContentDefinition>
       <ContentDefinition Id="api.selfasserted">
-        <LoadUri>https://itthings.blob.core.windows.net/public/b2c/selfAsserted.cshtml</LoadUri>
+        <LoadUri>https://weblol.blob.core.windows.net/public/b2c/selfAsserted.cshtml</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.7</DataUri>
         <Metadata>
@@ -131,7 +131,7 @@
         </Metadata>
       </ContentDefinition>
       <ContentDefinition Id="api.selfasserted.profileupdate">
-        <LoadUri>https://itthings.blob.core.windows.net/public/b2c/selfAsserted.cshtml</LoadUri>
+        <LoadUri>https://weblol.blob.core.windows.net/public/b2c/selfAsserted.cshtml</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.7</DataUri>
         <Metadata>
@@ -139,7 +139,7 @@
         </Metadata>
       </ContentDefinition>
       <ContentDefinition Id="api.localaccountsignup">
-        <LoadUri>https://itthings.blob.core.windows.net/public/b2c/selfAsserted.cshtml</LoadUri>
+        <LoadUri>https://weblol.blob.core.windows.net/public/b2c/selfAsserted.cshtml</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.7</DataUri>
         <Metadata>
@@ -147,7 +147,7 @@
         </Metadata>
       </ContentDefinition>
       <ContentDefinition Id="api.localaccountpasswordreset">
-        <LoadUri>https://itthings.blob.core.windows.net/public/b2c/selfAsserted.cshtml</LoadUri>
+        <LoadUri>https://weblol.blob.core.windows.net/public/b2c/selfAsserted.cshtml</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.7</DataUri>
         <Metadata>
@@ -155,7 +155,7 @@
         </Metadata>
       </ContentDefinition>
       <ContentDefinition Id="api.socialccountsignup">
-        <LoadUri>https://itthings.blob.core.windows.net/public/b2c/selfAsserted.cshtml</LoadUri>
+        <LoadUri>https://weblol.blob.core.windows.net/public/b2c/selfAsserted.cshtml</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.7</DataUri>
         <Metadata>
@@ -163,7 +163,7 @@
         </Metadata>
       </ContentDefinition>
       <ContentDefinition Id="api.localaccountsignin">
-        <LoadUri>https://itthings.blob.core.windows.net/public/b2c/selfAsserted.cshtml</LoadUri>
+        <LoadUri>https://weblol.blob.core.windows.net/public/b2c/selfAsserted.cshtml</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.7</DataUri>
         <Metadata>

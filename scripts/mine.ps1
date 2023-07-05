@@ -50,7 +50,7 @@ Repair-AzADB2CUserJourneyOrder
 
 Set-AzADB2CCustomizeUX -FullContentDefinition  -DownloadHtmlTemplates -urlBaseUx "https://itthings.blob.core.windows.net/public/b2c"
  
- Set-AzADB2CAppInsights -InstrumentationKey "0767870b-14e3-4ba0-bebf-da140824069b" 
+ Set-AzADB2CAppInsights -InstrumentationKey "4df13292-dd73-4fae-90ab-041bc265a9e0" 
 
 Add-AzADB2CClaimsProvider -ProviderName "google" -client_id "37277257186-v6vefm376h91d89ncsj2elhur15ol6iq.apps.googleusercontent.com" -BasePolicyFileName "Phone_Email_Base.xml"
 

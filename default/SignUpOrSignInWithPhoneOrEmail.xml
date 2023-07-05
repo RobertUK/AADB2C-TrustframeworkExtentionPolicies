@@ -13,7 +13,7 @@
     <DefaultUserJourney ReferenceId="SignUpOrSignInWithPhoneOrEmail" />
     <UserJourneyBehaviors>
       <JourneyInsights TelemetryEngine="ApplicationInsights"
-        InstrumentationKey="0767870b-14e3-4ba0-bebf-da140824069b" DeveloperMode="true"
+        InstrumentationKey="4df13292-dd73-4fae-90ab-041bc265a9e0" DeveloperMode="true"
         ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
       <ScriptExecution>Allow</ScriptExecution>
     </UserJourneyBehaviors>
